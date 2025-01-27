@@ -1,29 +1,35 @@
-### IntelliJ IDEA ###
+# common ignored files
+*.log
+*.class
+*.jar
+*.war
+*.ear
+
+# IntelliJ IDEA
+.idea/
+*.iml
 out/
-!**/src/main/**/out/
-!**/src/test/**/out/
-.idea
-### Eclipse ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
+*.ipr
+*.iws
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+# Maven
+target/
+*.mvn/
+!.mvn/wrapper/maven-wrapper.jar
+*.bat
+*.cmd
 
-### VS Code ###
-.vscode/
+# PostgreSQL
+*.sql~
+*.dump
 
-### Mac OS ###
+#local settings of system
 .DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+#local configuration files
+application.properties
+application.yml
+.env
