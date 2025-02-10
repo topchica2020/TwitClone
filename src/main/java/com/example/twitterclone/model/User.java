@@ -1,7 +1,9 @@
 package com.example.twitterclone.model;
 
 import jakarta.persistence.*;
-import java.util.Set;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class User {
@@ -9,11 +11,17 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String username;
-    private String password;
+    @NotBlank(message = "Username is required")
+    @Size(min = 3, max = 50, message = "Username must be between 3 and 50 characters")
+    private String username; // Логин
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private Set<Post> posts;
+    @NotBlank(message = "Password is required")
+    @Size(min = 6, message = "Password must be at least 6 characters")
+    private String password; // Пароль
+
+    @NotBlank(message = "Email is required")
+    @Email(message = "Email should be valid")
+    private String email;    // Электронная почта
 
     // Геттеры и сеттеры
     public Long getId() {
@@ -40,11 +48,11 @@ public class User {
         this.password = password;
     }
 
-    public Set<Post> getPosts() {
-        return posts;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPosts(Set<Post> posts) {
-        this.posts = posts;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
